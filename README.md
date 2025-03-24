@@ -1,2 +1,6 @@
 # metro_simulation_project
-Bu çalışma, Akbank Python ile Yapay Zekaya Giriş Bootcamp'i için yapılmıştır
+Bu çalışma, Akbank Python ile Yapay Zekaya Giriş Bootcamp'i için yapılmıştır. Çalışmanın amacı yapay zeka algoritmalarını öğrenmek ve pekiştirmek amacıyca iki istasyon arasındaki en hızlı ve en az aktarmalı rotayı bulan bir metro simülasyon geliştirmektir.
+Hazırlanan modelde aktarma her birinde üç istasyon bulunan dört metro hattı vardır ve her hat için aktarma bağlantıları verilmiştir.
+Seçilen iki istasyon arasındaki en az aktarmalı rotayı tespit edebilmek için BFS(Breadth-first search) algoritması kullanılmıştır. Bu arama algoritması dügümleri arama işleminde başlangıç noktasına yakın olan düğümlere öncelik vererek enine bir tarama yapar.
+Hedef istasyona en hızlı rotayı saptamak için A* algoritması kullanılır. Bu algoritma ağırlıklı grafik kullanarak optimal arama sağlar. Böylece başlangıç ve hedef düğümleri arasındaki rota sadece uzunluğa değil zamana göre de hesaplanır.
+Bu projede collections ve heapq modülleri kullanıldı. Heapq modülü A* algoritmasını kullanırken her düğüme gerekli ağırlık değerlerini atamak için kullanılmıştır. Böylece ağırlıkık bazında en kısa bağlantı( en hızlı rota) bulunur. Collections modülü ise model için gerekli özel veri türlerini sağlar.
