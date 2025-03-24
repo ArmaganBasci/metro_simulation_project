@@ -33,6 +33,7 @@ class MetroAgi:
 
         if baslangic_id not in self.istasyonlar or hedef_id not in self.istasyonlar:
             return None
+    #Başlangıç ve hedef istasyonların varlığını kontrol edin
 
         baslangic = self.istasyonlar[baslangic_id]
         hedef = self.istasyonlar[hedef_id]
@@ -43,11 +44,12 @@ class MetroAgi:
             istasyon, rota = kuyruk.popleft()
             if istasyon.idx == hedef_id:
                 return rota
-
+#BFS algoritmasını kullanarak en az aktarmalı rotayı bulun
             for komsu, sure in istasyon.komsular:
                 if komsu not in ziyaret_edildi:
                     ziyaret_edildi.add(komsu)
                     kuyruk.append((komsu, rota + [komsu]))
+        #Rota bulunamazsa None, bulunursa istasyon listesi döndürün        
 
 
 
@@ -55,7 +57,8 @@ class MetroAgi:
 
         if baslangic_id not in self.istasyonlar or hedef_id not in self.istasyonlar:
             return None
-
+#Başlangıç ve hedef istasyonların varlığını kontrol edin
+        
         baslangic = self.istasyonlar[baslangic_id]
         hedef = self.istasyonlar[hedef_id]
         ziyaret_edildi = set()
@@ -67,6 +70,7 @@ class MetroAgi:
             if istasyon.idx == hedef_id:
                 return rota, g[istasyon]
             ziyaret_edildi.add(istasyon)
+            #A* algoritmasını kullanarak en hızlı rotayı bulun
             for komsu, sure in istasyon.komsular:
                 if komsu not in ziyaret_edildi:
                     alt_g = g[istasyon] + sure
@@ -74,6 +78,7 @@ class MetroAgi:
                         g[komsu] = alt_g
                         f = alt_g
                         heapq.heappush(pq, (f, id(komsu), komsu, rota + [komsu]))
+                #Rota bulunamazsa None, bulunursa (istasyon_listesi, toplam_sure) tuple'ı döndürün
 
 
 
